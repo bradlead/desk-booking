@@ -1,0 +1,27 @@
+{
+  "name": "music-library-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bradlead/music-library-api.git"
+  },
+  "author": "bradlead",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradlead/music-library-api/issues"
+  },
+  "homepage": "https://github.com/bradlead/music-library-api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "jest": "^22.4.3",
+    "mongoose": "^5.0.14",
+    "node": "^9.11.0"
+  }
+}
