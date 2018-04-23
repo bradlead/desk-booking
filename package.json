@@ -23,5 +23,8 @@
     "jest": "^22.4.3",
     "mongoose": "^5.0.14",
     "node": "^9.11.0"
+  },
+  "devDependencies": {
+    "node-mocks-http": "^1.5.8"
   }
 }
