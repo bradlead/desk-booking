@@ -15,29 +15,43 @@ const app = express();
 mongoose.connect(process.env.DATABASE_CONN);
 app.use(bodyParser.json())
 app.get('/', (req, res, next) => res.send('Hello MongoDb!'));
-app.use('/graphql', graphqlHttp({
-    schema: buildSchema('
-        type RootQuery{
+app.use(
+  '/graphql', 
+    graphqlHttp({
+      schema: buildSchema(`
+          type RootQuery {
+              desks: [String!]!
+          }
+          type RootMutation {
+              createDesk(name: String): String
+          }
+          schema {
+            query: RootQuery
+            mutation: RootMutation
+          }
+        `),
 
-        }
-        type RootMutation {
+    rootValue: {
+      desks: () => {
+        return ['NS280', 'AS380', 'AB289'];
+      },
+      createDesk: (args) => {
+        const deskName =args.name;
+        return deskName;
+      }
+    
+    },
+    graphiql: true
+  })
+);
 
-        }
-        schema {
-         query: RootQuery
-          mutation: RootMutation
-        }
-      ),
-    rootValue: {}
-}));
 
 
-
-app.post('/Desk', Desk.post);
+/*app.post('/Desk', Desk.post);
 app.get('/Desk', DeskController.list);
 app.get('/Desk/:deskId', DeskController.get);
 app.get('/Desk/:deskId', DeskController.put);
 app.get('/Desk/:deskId', DeskController.put);
-
+*/
 
 app.listen(3000, () => console.log('It works!'));
